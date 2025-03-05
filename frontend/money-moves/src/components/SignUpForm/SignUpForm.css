@@ -1,0 +1,87 @@
+.signUpPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    height: calc(100vh - 50px);
+    /* Adjusted to account for padding */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: rgb(129, 149, 167);
+    text-align: center;
+}
+
+.left-content,
+.right-content {
+    width: 50%;
+    /* Each div occupies half of the screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 500px;
+}
+
+.right-content {
+    text-align: left;
+}
+
+.signUp-outer {
+    width: 80%;
+    height: 80%;
+    background-color: rgb(86, 162, 86);
+    border-radius: 2.5%;
+    padding: 35px;
+    border: 1px solid grey;
+}
+
+.signUp-form {
+    background-color: rgb(253, 145, 204);
+    border-radius: 2.5%;
+    padding: 25px;
+}
+
+.signUp-form input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.signUp-form input:focus {
+    background-color: lightblue;
+}
+
+.signUp-form input {
+    background-color: rgba(255, 255, 255, 0.292) !important;
+}
+
+.signUp-form button {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid maroon;
+    height: 40px;
+    background-color: white;
+    color: black;
+    vertical-align: center;
+}
+
+.signUp-form button:hover {
+    background-color: maroon;
+    color: white;
+    cursor: pointer;
+}
+
+.signUp-form #error {
+    color: red;
+}
+
+.signUpPage p {
+    margin-top: 5%;
+    width: 70%;
+    margin-left: 15%;
+    text-align: center;
+}
+
+p.fail {
+    color: red;
+}

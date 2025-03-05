@@ -1,4 +1,4 @@
-import moneyMovesLogo from '../assets/moneymoves.png'
+import TitleAndLogo from '../components/TitleAndLogo/TitleAndLogo'
 import '../styles/Home.css'
 
 import { useNavigate } from 'react-router-dom'
@@ -13,12 +13,7 @@ function Home() {
 
   return (
     <div className="home">
-      <div className="header-container">
-        <a target="_blank">
-          <img src={moneyMovesLogo} className="logo moneymoves" alt="MoneyMoves logo" onClick={handleLogoClick}/>
-        </a>
-        <h1 id="appTitle">Money Moves</h1>
-      </div>
+      <TitleAndLogo handleLogoClick={handleLogoClick} isLogoNextToTitle={true}/>
     </div>
   )
 }
