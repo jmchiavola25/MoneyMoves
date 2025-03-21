@@ -8,7 +8,8 @@ export async function authenticateToken() : Promise<Boolean>{
 
     try {
         // Await the validateToken call and check the result
-        await validateToken(token);
+        const response = await validateToken(token);
+        localStorage.setItem('userId', response.userId);
         console.log("Token is valid");
         return true;
     } catch (error) {
