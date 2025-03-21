@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class UserMapper {
     public UserDto toUserDto(final User user) {
-        return new UserDto(user.getEmail(), user.getPassword());
+        return new UserDto(user.getId(), user.getEmail(), user.getPassword());
     }
 }

@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +36,20 @@ public class UserController {
                 userService.getUser(authentication.getName());
 
         return ResponseEntity.ok(userMapper.toUserDto(user));
+    }
+
+    @CrossOrigin
+    @GetMapping("/id")
+    public ResponseEntity<Long> getUserId()
+    {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails userDetails) {
+            // Assuming the username or a custom field in user details holds the user ID
+            return ResponseEntity.ok(Long.parseLong(userDetails.getUsername()));  // Or another field containing the ID
+        } else {
+            throw new RuntimeException("User is not authenticated");
+        }
     }
 }
 

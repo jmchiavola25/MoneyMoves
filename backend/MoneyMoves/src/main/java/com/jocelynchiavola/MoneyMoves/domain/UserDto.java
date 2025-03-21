@@ -1,4 +1,4 @@
 package com.jocelynchiavola.MoneyMoves.domain;
 
-public record UserDto(String email, String password){
+public record UserDto(Long userId, String email, String password){
 }
