@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin
 // Allow frontend to communicate with this backend
 public class UserController {
 
@@ -25,7 +25,8 @@ public class UserController {
     @Autowired
     private final UserMapper userMapper;
 
-    @GetMapping("/me")
+    @CrossOrigin
+    @GetMapping("/profile")
     public ResponseEntity<UserDto> getUserProfile(
             final Authentication authentication) {
 
