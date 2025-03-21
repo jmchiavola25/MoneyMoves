@@ -9,6 +9,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 // User.java
 @Entity
@@ -34,5 +36,8 @@ public class User {
     @Column(name = "updated_at")
     @LastModifiedDate
     private Instant updatedAt;
+
+    @OneToMany(mappedBy = "user", cascade =   CascadeType.ALL, orphanRemoval = true)
+    private List<Budget> budgets = new ArrayList<>();
 }
 

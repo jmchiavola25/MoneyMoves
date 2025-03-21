@@ -27,4 +27,6 @@ public class JpaUserDetailsService implements UserDetailsService {
                 "User with email [%s] not found".formatted(email)));
     }
 
+
+
 }
