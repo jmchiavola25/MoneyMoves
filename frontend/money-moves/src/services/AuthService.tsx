@@ -15,3 +15,20 @@ export async function register (email: string, password: string) {
         }
     });
 };
+
+export async function validateToken(token: string) {
+    console.log("Validating token:", token);
+    return fetch('http://localhost:8080/api/user/profile', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error("Invalid token.");
+        }
+    }
+    );
+}

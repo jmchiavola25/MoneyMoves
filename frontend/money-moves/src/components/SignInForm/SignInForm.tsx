@@ -26,6 +26,7 @@ const SignUpForm: React.FC = () => {
             })
             .catch(() => {
                 console.error("Login failed");
+                setLoginFailed(true);
             })
                 
     }
