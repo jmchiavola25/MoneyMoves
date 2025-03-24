@@ -1,6 +1,6 @@
 
 export async function getBudgets(userId: BigInt) {
-    return fetch('http://localhost:8080/api/budgets', {
+    return fetch(`http://localhost:8080/api/budgets/${userId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

@@ -2,16 +2,12 @@ import './TagInput.css';
 import {
     Input,
     Tag,
-    TagLabel,
     HStack,
     VStack,
-    Button,
-    CloseButton,
-    TagCloseTrigger,
-    Stack
+    Button
   } from "@chakra-ui/react";
 import { useState } from 'react';  
-import { HiPlus, HiX } from 'react-icons/hi';
+import { HiPlus } from 'react-icons/hi';
 
 const TagInput = () => {
     const [tags, setTags] = useState<string[]>([]);
