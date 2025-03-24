@@ -4,8 +4,7 @@ export async function getBudgets(userId: BigInt) {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ userId })
+        }
     })
     .then(async response => {
         console.log("Response status:", response.status);

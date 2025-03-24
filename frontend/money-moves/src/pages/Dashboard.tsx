@@ -4,6 +4,11 @@ import { authenticateToken } from "../utils/TokenAuthentication";
 import { getBudgets } from "../services/BudgetService";
 
 import BudgetCard from "../components/BudgetCard/BudgetCard";
+import { Button, ButtonGroup, EmptyState, VStack } from "@chakra-ui/react"
+import { HiCalculator } from "react-icons/hi"
+import CreateBudgetModal from "../components/CreateBudgetModal/CreateBudgetModal";
+
+import '../styles/Dashboard.css';
 
 interface Budget {
     name: string;
@@ -38,11 +43,28 @@ function Dashboard () {
 
     
      return (
-        <div>
-            <h1>Dashboard</h1>
+        <div className="dashboard">
             {budgets.length > 0 ? budgets.map((budget: Budget) => (
                 <BudgetCard name={budget.name}></BudgetCard>
-            )) : <p>No budgets found</p>}
+            )) : <div className="emptyDashboard">
+                    <EmptyState.Root size="lg" colorPalette='pink'>
+                        <EmptyState.Content>
+                            <EmptyState.Indicator >
+                                <HiCalculator color="green"/>
+                            </EmptyState.Indicator>
+                                <VStack textAlign="center">
+                            <EmptyState.Title>Start budgeting!</EmptyState.Title>
+                            <EmptyState.Description color={"purple"}>
+                                Add a new budget to get started
+                            </EmptyState.Description>
+                            </VStack>
+                            <ButtonGroup>
+                                <CreateBudgetModal/>
+                                <Button size="md" variant="outline" background={"blue"}>Import</Button>
+                            </ButtonGroup>
+                        </EmptyState.Content>
+                        </EmptyState.Root>
+                </div>}
         </div>
      )
 }

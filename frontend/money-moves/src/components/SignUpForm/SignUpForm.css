@@ -6,7 +6,6 @@
     height: calc(100vh - 50px);
     /* Adjusted to account for padding */
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: rgb(129, 149, 167);
     text-align: center;
 }
 
