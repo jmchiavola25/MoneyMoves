@@ -7,18 +7,25 @@ import Dashboard from "../pages/Dashboard";
 import "../styles/App.css"
 import { Provider } from '../components/ui/provider';
 
+import { AuthProvider } from '../utils/AuthContext';
+import { ChakraProvider, defaultSystem} from '@chakra-ui/react';
+
 function App() {
+
+
   return (
     <Provider>
       <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+              <Route path="/dashboard" element={<ChakraProvider value={defaultSystem}><Dashboard /></ChakraProvider>}/>
+          </Routes>
+        </AuthProvider>
       </Router>
-    </Provider>
+      </Provider>
   );
 }
 

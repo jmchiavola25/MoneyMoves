@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { authenticateToken } from "../utils/TokenAuthentication";
 import { getBudgets } from "../services/BudgetService";
 
 import BudgetCard from "../components/BudgetCard/BudgetCard";
@@ -14,19 +13,11 @@ interface Budget {
     name: string;
 }
 
-function Dashboard () {
-
+const Dashboard = () => {
     const [budgets, setBudgets] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const checkTokenAndRedirect = async () => {
-            const isAuthenticated = await authenticateToken();
-            if (!isAuthenticated) {
-                // If token is invalid or not present, redirect to /login
-                navigate('/login');
-            }
-        };
 
         const loadBudgets = async () => {
             if (localStorage.getItem("userId") === null) {
@@ -37,7 +28,6 @@ function Dashboard () {
             }
         }
 
-        checkTokenAndRedirect();
         loadBudgets();
     }, [navigate]);
 
@@ -45,7 +35,7 @@ function Dashboard () {
      return (
         <div className="dashboard">
             {budgets.length > 0 ? budgets.map((budget: Budget) => (
-                <BudgetCard name={budget.name}></BudgetCard>
+                <BudgetCard name={budget.name} key={budget.name}></BudgetCard>
             )) : <div className="emptyDashboard">
                     <EmptyState.Root size="lg" colorPalette='pink'>
                         <EmptyState.Content>
