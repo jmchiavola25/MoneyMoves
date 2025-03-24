@@ -9,8 +9,13 @@ import {
 import { useState } from 'react';  
 import { HiPlus } from 'react-icons/hi';
 
-const TagInput = () => {
-    const [tags, setTags] = useState<string[]>([]);
+interface TagInputProps {
+  tags: string[];
+  setTags: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+const TagInput : React.FC<TagInputProps> = ({tags, setTags}) => {
+  
   const [inputValue, setInputValue] = useState("");
 
   const addTag = () => {
