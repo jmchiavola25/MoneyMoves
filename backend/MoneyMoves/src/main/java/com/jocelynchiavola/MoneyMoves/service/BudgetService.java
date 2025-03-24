@@ -1,6 +1,7 @@
 package com.jocelynchiavola.MoneyMoves.service;
 
 import com.jocelynchiavola.MoneyMoves.domain.Budget;
+import com.jocelynchiavola.MoneyMoves.domain.BudgetDTO;
 import com.jocelynchiavola.MoneyMoves.domain.User;
 import com.jocelynchiavola.MoneyMoves.repositories.BudgetRepository;
 import com.jocelynchiavola.MoneyMoves.repositories.UserRepository;
@@ -27,10 +28,14 @@ public class BudgetService implements BudgetServiceImpl {
     }
 
     @Override
-    public Budget createBudget(Long userId, Budget budget) {
+    public Budget createBudget(Long userId, BudgetDTO budgetDTO) {
         User user = userRepository.findById(userId).orElseThrow(() ->
                 new RuntimeException("User not found"));
-        budget.setUser(user);
+        // Create a new Budget object and set the properties from the request body
+        Budget budget = new Budget();
+        budget.setName(budgetDTO.name());
+        budget.setFields(budgetDTO.fields());
+        budget.setUser(user); // Set the user for this budget
         return budgetRepository.save(budget);
     }
 }

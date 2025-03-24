@@ -16,7 +16,7 @@ import java.util.List;
 public class Budget {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @Column(nullable = false)
@@ -26,6 +26,6 @@ public class Budget {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "budget", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BudgetField> entries = new ArrayList<>();
+    @ElementCollection
+    private List<String> fields = new ArrayList<>();
 }

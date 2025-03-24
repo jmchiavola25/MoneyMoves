@@ -1,6 +1,7 @@
 package com.jocelynchiavola.MoneyMoves.controller;
 
 import com.jocelynchiavola.MoneyMoves.domain.Budget;
+import com.jocelynchiavola.MoneyMoves.domain.BudgetDTO;
 import com.jocelynchiavola.MoneyMoves.service.BudgetService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,9 @@ public class BudgetController {
     }
 
     @PostMapping("/{userId}")
-    public ResponseEntity<Budget> createBudget(@PathVariable Long userId, @RequestBody Budget budget)
+    public ResponseEntity<Budget> createBudget(@PathVariable("userId") Long userId, @RequestBody BudgetDTO budgetDTO)
     {
-        return ResponseEntity.status(HttpStatus.CREATED).body(budgetService.createBudget(userId, budget));
+        return ResponseEntity.status(HttpStatus.CREATED).body(budgetService.createBudget(userId, budgetDTO));
     }
 
 }
