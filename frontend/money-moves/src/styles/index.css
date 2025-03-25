@@ -33,9 +33,9 @@ body {
 @media (prefers-color-scheme: dark) {
   :root {
     color: #213547;
-    background-color: #dfb4c4;
+    background-color: #f9f9f9;
   }
   a:hover {
-    color: #747bff;
+    color: #093b8d;
   }
 }

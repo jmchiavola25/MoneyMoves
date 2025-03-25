@@ -1,5 +1,5 @@
 
-export async function getBudgets(userId: BigInt) {
+export async function getBudgets(userId: number) {
     return fetch(`http://localhost:8080/api/budgets/${userId}`, {
         method: 'GET',
         headers: {
@@ -46,6 +46,31 @@ export async function createBudget(userId: number, name: string, fields: string[
     })
     .catch(error => {
         console.error("Error fetching budgets:", error);
+        throw error;
+    });
+}
+
+export async function deleteBudget(budgetId: number) {
+    return fetch(`http://localhost:8080/api/budgets/${budgetId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(async response => {
+        console.log("Response status:", response.status);
+        const responseData = await response.text(); // Log raw response
+
+        if (response.ok) {
+            console.log("Budget deleted successful:", responseData);
+            return;
+        } else {
+            console.error("Budget delete failed:", responseData);
+            throw new Error("Budget id does not exist.");
+        }
+    })
+    .catch(error => {
+        console.error("Error deleting budget:", error);
         throw error;
     });
 }

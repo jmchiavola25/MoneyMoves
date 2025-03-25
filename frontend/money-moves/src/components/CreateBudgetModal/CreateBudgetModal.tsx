@@ -4,16 +4,19 @@ import { Button, CloseButton, Dialog, Portal } from "@chakra-ui/react"
 import CreateBudgetFieldset from "../CreateBudgetFieldset/CreateBudgetFieldset"
 import { useState } from 'react';
 
+interface CreateBudgetModalProps {
+    fetchBudgets: () => void;
+}
 
-const CreateBudgetModal = () => {
+const CreateBudgetModal : React.FC<CreateBudgetModalProps> = ({fetchBudgets}) => {
 
     const [open, setOpen] = useState(false)
 
     return(
     <Dialog.Root lazyMount open={open} onOpenChange={(e) => setOpen(e.open)}>
         <Dialog.Trigger asChild>
-        <Button variant="outline" size="md" background={"green"}>
-            Create New Budget
+        <Button variant="outline" size="lg" background={"#3f6640"} color={"white"}>
+            Create
         </Button>
         </Dialog.Trigger>
         <Portal>
@@ -24,7 +27,7 @@ const CreateBudgetModal = () => {
                 <Dialog.Title color={"black"}>Create New Budget</Dialog.Title>
             </Dialog.Header>
             <Dialog.Body>
-                <CreateBudgetFieldset setIsOpen={setOpen}/>
+                <CreateBudgetFieldset setIsOpen={setOpen} fetchBudgets={fetchBudgets}/>
             </Dialog.Body>
             <Dialog.CloseTrigger asChild >
                 <CloseButton size="sm" background={"red"}/>

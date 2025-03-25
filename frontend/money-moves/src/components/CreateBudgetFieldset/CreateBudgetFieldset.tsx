@@ -14,17 +14,19 @@ import {createBudget} from "../../services/BudgetService";
 
 interface CreateBudgetFieldsetProps {
     setIsOpen: (isOpen: boolean) => void;
+    fetchBudgets: () => void;
 }
 
-const CreateBudgetFieldset : React.FC<CreateBudgetFieldsetProps> = ({setIsOpen}) => {
+const CreateBudgetFieldset : React.FC<CreateBudgetFieldsetProps> = ({setIsOpen, fetchBudgets}) => {
 
     const [tags, setTags] = useState<string[]>([]);
     const [name, setName] = useState<string>("");
 
-    const createNewBudget = (event: React.MouseEvent<HTMLButtonElement>, name: string, fields: string[]) => {
+    const handleCreateBudget = async (event: React.MouseEvent<HTMLButtonElement>, name: string, fields: string[]) => {
         event.preventDefault();
-        const userId = localStorage.getItem("userId")!! as unknown as number;
-        createBudget(userId, name, fields);
+        const userId = Number(localStorage.getItem("userId"));
+        await createBudget(userId, name, fields);
+        await fetchBudgets();
         setIsOpen(false);
     }
 
@@ -54,9 +56,12 @@ const CreateBudgetFieldset : React.FC<CreateBudgetFieldsetProps> = ({setIsOpen})
             <TagInput tags={tags} setTags={setTags}/>
           </Field.Root>
         </Fieldset.Content>
-  
-        <Button type="submit" alignSelf="flex-end" background={"#3f6640"} color={"white"} onClick={(e) => createNewBudget(e, name, tags)}>
-          Submit
+        <Button 
+            type="submit" 
+            alignSelf="flex-end" 
+            background={"#3f6640"} 
+            color={"white"} 
+            onClick={(e) => handleCreateBudget(e, name, tags)}>Submit
         </Button>
       </Fieldset.Root>
       )

@@ -26,14 +26,14 @@
 .signUp-outer {
     width: 80%;
     height: 80%;
-    background-color: rgb(86, 162, 86);
+    background-color: #9fafc9;
     border-radius: 2.5%;
     padding: 35px;
     border: 1px solid grey;
 }
 
 .signUp-form {
-    background-color: rgb(253, 145, 204);
+    background-color: #f4f7fc;
     border-radius: 2.5%;
     padding: 25px;
 }
@@ -57,7 +57,7 @@
 .signUp-form button {
     width: 100%;
     border-radius: 5px;
-    border: 1px solid maroon;
+    border: 1px solid #093b8d;
     height: 40px;
     background-color: white;
     color: black;
@@ -65,7 +65,7 @@
 }
 
 .signUp-form button:hover {
-    background-color: maroon;
+    background-color: #093b8d;
     color: white;
     cursor: pointer;
 }
