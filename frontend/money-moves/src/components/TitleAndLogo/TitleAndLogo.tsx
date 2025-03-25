@@ -3,12 +3,12 @@ import './TitleAndLogo.css';
 
 import {Link} from 'react-router-dom';
 
-interface LogoAndTitleProps {
+interface TitleAndLogoProps {
   handleLogoClick: () => void;
   isLogoNextToTitle: boolean;  // New prop for layout control
 }
 
-function LogoAndTitle({ handleLogoClick, isLogoNextToTitle }: LogoAndTitleProps) {
+function TitleAndLogo({ handleLogoClick, isLogoNextToTitle }: TitleAndLogoProps) {
   return (
     <div className={`header-container ${isLogoNextToTitle ? 'horizontal' : 'vertical'}`}>
         <Link to="/login" onClick={handleLogoClick}>
@@ -19,4 +19,4 @@ function LogoAndTitle({ handleLogoClick, isLogoNextToTitle }: LogoAndTitleProps)
   );
 }
 
-export default LogoAndTitle;
+export default TitleAndLogo;

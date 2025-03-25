@@ -23,15 +23,13 @@ const BudgetCard: React.FC<BudgetCardProps> = ({name, id, fields, fetchBudgets})
             <Card.Root width="320px" height="275px" background={"#9fafc9"}>
             <Card.Body gap="2">
                 <Card.Title mt="2" color={"#1e2a38"}>{name}</Card.Title>
-                <Card.Description color={"#333"}>
                 <HStack gap="1" wrap={"wrap"}>
-                        {fields.map((field) => (
-                            <Tag.Root color={"white"} background={"#3f6640"} size="lg" key={field}>
-                              <Tag.Label>{field}</Tag.Label>
-                            </Tag.Root>
-                        ))}
-                        </HStack>
-                </Card.Description>
+                    {fields.map((field) => (
+                        <Tag.Root color={"white"} background={"#3f6640"} size="lg" key={field}>
+                            <Tag.Label>{field}</Tag.Label>
+                        </Tag.Root>
+                    ))}
+                </HStack>
             </Card.Body>
             <Card.Footer justifyContent="flex-end">
                 <Button variant="outline" background={"#d7263d"} onClick={onDeleteBudget}>Delete</Button>

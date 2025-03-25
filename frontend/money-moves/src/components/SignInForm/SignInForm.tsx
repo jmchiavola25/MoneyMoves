@@ -6,9 +6,10 @@ import { useNavigate } from 'react-router-dom';
 
 interface LoginResponse {
     token: string;
+    userId: number;
 }
 
-const SignUpForm: React.FC = () => {
+const SignInForm: React.FC = () => {
     const [loginFailed, setLoginFailed] = useState(false);
 
     const nav = useNavigate();
@@ -22,6 +23,7 @@ const SignUpForm: React.FC = () => {
             .then((response: LoginResponse) => {
                 console.log(response)
                 localStorage.setItem('token', response.token);  
+                localStorage.setItem('userId', `${response.userId}`)
                 nav('/dashboard');
             })
             .catch(() => {
@@ -62,4 +64,4 @@ const SignUpForm: React.FC = () => {
     )
 };
 
-export default SignUpForm;
+export default SignInForm;

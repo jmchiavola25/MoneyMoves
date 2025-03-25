@@ -18,8 +18,7 @@ const Dashboard = () => {
     const [budgets, setBudgets] = useState([]);
 
     const fetchBudgets = async () => {
-        const userId = Number(localStorage.getItem("userId"));
-        const mBudgets = await getBudgets(userId);
+        const mBudgets = await getBudgets(Number(localStorage.getItem("userId")));
         setBudgets(mBudgets);
     }
 
@@ -28,7 +27,7 @@ const Dashboard = () => {
     }, []);
 
      return (
-        <HStack className="dashboard" wrap={"wrap"} gap={2}>
+        <HStack className="dashboard" wrap={"wrap"} gap={5}>
             {budgets.length > 0 ? budgets.map((budget: Budget) => (
                 <BudgetCard id={budget.id} name={budget.name} key={budget.name} fields={budget.fields} fetchBudgets={fetchBudgets}></BudgetCard>
             )) : <div className="emptyDashboard">
@@ -39,10 +38,10 @@ const Dashboard = () => {
                             <HiCalculator color="#3f6640"/>
                         </EmptyState.Indicator>
                             <VStack textAlign="center">
-                        <EmptyState.Title color={"#1e2a38"}>Start budgeting!</EmptyState.Title>
-                        <EmptyState.Description color={"#333"}>
-                            Add a new budget to get started
-                        </EmptyState.Description>
+                                <EmptyState.Title color={"#1e2a38"}>Start budgeting!</EmptyState.Title>
+                                <EmptyState.Description color={"#333"}>
+                                    Add a new budget to get started
+                                </EmptyState.Description>
                         </VStack>
                         <ButtonGroup>
                             <CreateBudgetModal fetchBudgets={fetchBudgets}/>

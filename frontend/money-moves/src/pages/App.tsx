@@ -9,6 +9,7 @@ import { Provider } from '../components/ui/provider';
 
 import { AuthProvider } from '../utils/AuthContext';
 import { ChakraProvider, defaultSystem} from '@chakra-ui/react';
+import Navbar from '../components/NavBar/NavBar';
 
 function App() {
 
@@ -16,7 +17,9 @@ function App() {
   return (
     <Provider>
       <Router>
-        <AuthProvider>
+      <Navbar className="navbar"/>
+      <div className="authProvider">
+        <AuthProvider >
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -24,6 +27,7 @@ function App() {
               <Route path="/dashboard" element={<ChakraProvider value={defaultSystem}><Dashboard /></ChakraProvider>}/>
           </Routes>
         </AuthProvider>
+        </div>
       </Router>
       </Provider>
   );

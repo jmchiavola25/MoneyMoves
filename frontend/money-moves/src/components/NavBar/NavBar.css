@@ -1,0 +1,32 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: #0c49ab; /* or any color you prefer */
+    color: white;
+    height: 8%;
+  }
+
+  .navbar #appTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(255, 185, 55, 0.8),
+                 0 0 20px rgba(255, 185, 55, 0.6),
+                 0 0 30px rgba(255, 185, 55, 0.4);
+  }
+
+  .navbar #appTitle:hover {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(255, 55, 218, 0.8),
+                 0 0 20px rgba(255, 55, 218, 0.6),
+                 0 0 30px rgba(255, 55, 218, 0.4);
+  }
