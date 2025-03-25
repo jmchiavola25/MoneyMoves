@@ -12,7 +12,11 @@ import {
 import {useState} from 'react';
 import {createBudget} from "../../services/BudgetService";
 
-const CreateBudgetFieldset = () => {
+interface CreateBudgetFieldsetProps {
+    setIsOpen: (isOpen: boolean) => void;
+}
+
+const CreateBudgetFieldset : React.FC<CreateBudgetFieldsetProps> = ({setIsOpen}) => {
 
     const [tags, setTags] = useState<string[]>([]);
     const [name, setName] = useState<string>("");
@@ -21,6 +25,7 @@ const CreateBudgetFieldset = () => {
         event.preventDefault();
         const userId = localStorage.getItem("userId")!! as unknown as number;
         createBudget(userId, name, fields);
+        setIsOpen(false);
     }
 
     return (
