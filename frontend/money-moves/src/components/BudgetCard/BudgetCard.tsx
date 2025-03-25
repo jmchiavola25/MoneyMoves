@@ -3,32 +3,21 @@ import "./BudgetCard.css";
 import {ButtonGroup, Card, HStack, IconButton, Tag} from "@chakra-ui/react"
 import { deleteBudget } from "../../services/BudgetService";
 import {LuEye, LuPencil, LuTag, LuTrash } from "react-icons/lu";
-import { useState, useRef, useEffect } from "react";
 
 interface BudgetCardProps {
     name: string
     id: number
     fields: string[]
     fetchBudgets: () => void
-    setMaxHeight: (height: number) => void
-    maxHeight: number
 }
 
-const BudgetCard: React.FC<BudgetCardProps> = ({name, id, fields, fetchBudgets, setMaxHeight, maxHeight}) => {
+const BudgetCard: React.FC<BudgetCardProps> = ({name, id, fields, fetchBudgets}) => {
 
     const onDeleteBudget = async () => {
         console.log("Delete budget with id: " + id);
         await deleteBudget(id);
         fetchBudgets();
     };
-
-    const cardRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (cardRef.current) {
-            setMaxHeight(cardRef.current.clientHeight); // Update maxHeight in parent
-        }
-    }, [fields]);
 
     return (
         <div>
