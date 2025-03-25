@@ -59,7 +59,7 @@ const CreateBudgetFieldset : React.FC<CreateBudgetFieldsetProps> = ({setIsOpen, 
         <Button 
             type="submit" 
             alignSelf="flex-end" 
-            background={"#3f6640"} 
+            background={"#0c49ab"} 
             color={"white"} 
             onClick={(e) => handleCreateBudget(e, name, tags)}>Submit
         </Button>

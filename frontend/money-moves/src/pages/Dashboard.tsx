@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getBudgets } from "../services/BudgetService";
 
 import BudgetCard from "../components/BudgetCard/BudgetCard";
-import { Button, ButtonGroup, EmptyState, HStack, VStack, Card, Icon } from "@chakra-ui/react"
+import { Button, ButtonGroup, EmptyState, HStack, VStack } from "@chakra-ui/react"
 import { HiCalculator } from "react-icons/hi"
 import CreateBudgetModal from "../components/CreateBudgetModal/CreateBudgetModal";
 
@@ -11,6 +11,7 @@ import '../styles/Dashboard.css';
 interface Budget {
     id: number;
     name: string;
+    fields: string[];
 }
 
 const Dashboard = () => {
@@ -29,23 +30,23 @@ const Dashboard = () => {
      return (
         <HStack className="dashboard" wrap={"wrap"} gap={2}>
             {budgets.length > 0 ? budgets.map((budget: Budget) => (
-                <BudgetCard id={budget.id} name={budget.name} key={budget.name} fetchBudgets={fetchBudgets}></BudgetCard>
+                <BudgetCard id={budget.id} name={budget.name} key={budget.name} fields={budget.fields} fetchBudgets={fetchBudgets}></BudgetCard>
             )) : <div className="emptyDashboard">
                 </div>}
-                <EmptyState.Root width="320px" height="275px" size="lg" background='orange' borderRadius={"10px"} padding={"2%"}>
+                <EmptyState.Root width="320px" height="275px" size="lg" background='#9fafc9' borderRadius={"2%"} padding={"2%"} outline={"1px solid black"}>
                     <EmptyState.Content>
                         <EmptyState.Indicator >
                             <HiCalculator color="#3f6640"/>
                         </EmptyState.Indicator>
                             <VStack textAlign="center">
-                        <EmptyState.Title>Start budgeting!</EmptyState.Title>
-                        <EmptyState.Description color={"purple"}>
+                        <EmptyState.Title color={"#1e2a38"}>Start budgeting!</EmptyState.Title>
+                        <EmptyState.Description color={"#333"}>
                             Add a new budget to get started
                         </EmptyState.Description>
                         </VStack>
                         <ButtonGroup>
                             <CreateBudgetModal fetchBudgets={fetchBudgets}/>
-                            <Button size="md" variant="outline" background={"#0c49ab"}>Import</Button>
+                            <Button size="lg" variant="outline" background={"#d7263d"}>Import</Button>
                         </ButtonGroup>
                     </EmptyState.Content>
                 </EmptyState.Root>

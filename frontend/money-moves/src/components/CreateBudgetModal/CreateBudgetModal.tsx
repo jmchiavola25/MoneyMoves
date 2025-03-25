@@ -15,7 +15,7 @@ const CreateBudgetModal : React.FC<CreateBudgetModalProps> = ({fetchBudgets}) =>
     return(
     <Dialog.Root lazyMount open={open} onOpenChange={(e) => setOpen(e.open)}>
         <Dialog.Trigger asChild>
-        <Button variant="outline" size="lg" background={"#3f6640"} color={"white"}>
+        <Button variant="outline" size="lg" background={"#0c49ab"} color={"white"}>
             Create
         </Button>
         </Dialog.Trigger>
@@ -30,7 +30,7 @@ const CreateBudgetModal : React.FC<CreateBudgetModalProps> = ({fetchBudgets}) =>
                 <CreateBudgetFieldset setIsOpen={setOpen} fetchBudgets={fetchBudgets}/>
             </Dialog.Body>
             <Dialog.CloseTrigger asChild >
-                <CloseButton size="sm" background={"red"}/>
+                <CloseButton size="sm" background={"#d7263d"}/>
             </Dialog.CloseTrigger>
             </Dialog.Content>
         </Dialog.Positioner>

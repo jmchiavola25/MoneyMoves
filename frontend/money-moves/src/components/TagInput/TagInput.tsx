@@ -40,7 +40,7 @@ const TagInput : React.FC<TagInputProps> = ({tags, setTags}) => {
           color={"black"}
           outlineColor={"blue"}
         />
-        <Button onClick={addTag} background={"#3f6640"} color={"white"}>
+        <Button onClick={addTag} background={"#0c49ab"} color={"white"}>
           <HiPlus/>
         </Button>
       </HStack>
