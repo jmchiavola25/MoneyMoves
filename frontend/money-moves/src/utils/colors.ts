@@ -1,5 +1,6 @@
 export const primaryColor = "#0c49ab"; // Deep Blue (Positive Button)
 export const secondaryColor = "#d7263d"; // Vibrant Red (Negative Button)
+export const tertiaryColor = "#de97dd" // Light Pink (Third Button)
 export const backgroundColor = "#f4f7fc"; // Soft Off-White (Background)
 export const cardBackgroundColor = "#9fafc9" // Soft light grey blue
 export const headingColor = "#1e2a38"; // Dark Navy (Headings)

@@ -16,6 +16,7 @@ interface Budget {
 
 const Dashboard = () => {
     const [budgets, setBudgets] = useState([]);
+    const [maxHeight, setMaxHeight] = useState<number>(275)
 
     const fetchBudgets = async () => {
         const mBudgets = await getBudgets(Number(localStorage.getItem("userId")));
@@ -29,7 +30,14 @@ const Dashboard = () => {
      return (
         <HStack className="dashboard" wrap={"wrap"} gap={5}>
             {budgets.length > 0 ? budgets.map((budget: Budget) => (
-                <BudgetCard id={budget.id} name={budget.name} key={budget.name} fields={budget.fields} fetchBudgets={fetchBudgets}></BudgetCard>
+                <BudgetCard 
+                id={budget.id} 
+                name={budget.name} 
+                key={budget.name} 
+                fields={budget.fields} 
+                fetchBudgets={fetchBudgets}
+                maxHeight={maxHeight}
+                setMaxHeight={setMaxHeight}></BudgetCard>
             )) : <div className="emptyDashboard">
                 </div>}
                 <EmptyState.Root width="320px" height="275px" size="lg" background='#9fafc9' borderRadius={"2%"} padding={"2%"} outline={"1px solid black"}>
