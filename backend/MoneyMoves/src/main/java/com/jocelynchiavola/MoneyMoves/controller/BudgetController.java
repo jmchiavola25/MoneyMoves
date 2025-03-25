@@ -32,4 +32,11 @@ public class BudgetController {
         return ResponseEntity.status(HttpStatus.CREATED).body(budgetService.createBudget(userId, budgetDTO));
     }
 
+    @DeleteMapping("/{budgetId}")
+    public ResponseEntity<Void> deleteBudget(@PathVariable("budgetId") Long budgetId) {
+        budgetService.deleteBudget(budgetId);
+        return ResponseEntity.noContent().build(); // 204 No Content response
+    }
+
+
 }
