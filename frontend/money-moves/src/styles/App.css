@@ -1,10 +1,9 @@
 html, body, #root {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   margin: 0;
   display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center; /* Centers vertically */
+  flex-direction: column; /* Centers horizontally */
 }
 
 /* Ensure the App container also fills the space */
@@ -17,5 +16,13 @@ html, body, #root {
 }
 
 .authProvider {
-  max-height: 92%;;
+  margin-top: 15vh;
+  padding-left: 5%;
+  padding-right: 5%;
+  flex-grow: 1; /* Automatically fills remaining height */
+  max-height: 92vh; /* Ensures it doesn't exceed 92% */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
