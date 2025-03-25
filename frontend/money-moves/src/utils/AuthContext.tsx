@@ -27,10 +27,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (!isAuthenticated) {
             const isUserAuthenticated = await authenticateToken();
             // If token is invalid or not present, redirect to /login
-            if (!isUserAuthenticated) {
+            if (!isUserAuthenticated && location.pathname !== "/signup") {
                 navigate('/login');
             }
-            else {
+            else if (isUserAuthenticated) {
                 setIsAuthenticated(true);
                 console.log("authenticate is true")
                 navigate('/dashboard');
@@ -45,7 +45,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             if (token) {
                 // Assuming you validate the token here
                 checkTokenAndRedirect();
-            } else {
+            } else if (location.pathname !== "/signup") {
                 setIsAuthenticated(false);
                 navigate("/login"); // Redirect if not authenticated
             }
