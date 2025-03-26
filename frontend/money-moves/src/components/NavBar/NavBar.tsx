@@ -1,22 +1,19 @@
+import AvatarMenu from "../AvatarMenu/AvatarMenu"
+import CreateBudgetModal from "../CreateBudgetModal/CreateBudgetModal"
 import "./NavBar.css"
 
 import { Box, ButtonGroup, Flex, HStack, Button } from "@chakra-ui/react"
 import { useLocation, useNavigate } from "react-router-dom"
-import AvatarMenu from "../AvatarMenu/AvatarMenu"
-import CreateBudgetModal from "../CreateBudgetModal/CreateBudgetModal"
 
 interface NavbarProps {
     className: string
+    fetchBudgets : () => void
 }
 
-const NavBar : React.FC<NavbarProps> = ({className}) => {
+const NavBar : React.FC<NavbarProps> = ({className, fetchBudgets}) => {
 
     const navigate = useNavigate()
     const location = useLocation();
-
-    const fetchBudgets = () => {
-
-    }
 
     return (
         <Box className={className}>

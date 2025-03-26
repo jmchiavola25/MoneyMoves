@@ -1,3 +1,11 @@
+import { ExpenseRecord } from "./ExpenseRecordService";
+
+export interface Budget {
+    id: number;
+    name: string;
+    fields: string[];
+    expenseRecords : ExpenseRecord[]
+};
 
 export async function getBudgets(userId: number) {
     return fetch(`http://localhost:8080/api/budgets/${userId}`, {

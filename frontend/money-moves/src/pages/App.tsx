@@ -1,32 +1,49 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import Dashboard from "../pages/Dashboard";
 import Budget from '../pages/Budget';
+import Navbar from '../components/NavBar/NavBar';
 import "../styles/App.css"
-import { Provider } from '../components/ui/provider';
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from '../components/ui/provider';
 import { AuthProvider } from '../utils/AuthContext';
 import { ChakraProvider, defaultSystem} from '@chakra-ui/react';
-import Navbar from '../components/NavBar/NavBar';
+import { Budget as BudgetObject } from '../services/BudgetService';
+import { useState } from 'react';
+import { getBudgets } from '../services/BudgetService';
 
 function App() {
 
+  const [selectedBudget, setSelectedBudget] = useState<BudgetObject | null>(null)
+  const [budgets, setBudgets] = useState([]);
+
+  const selectBudget = (budget : BudgetObject) => {
+    setSelectedBudget(budget);
+    localStorage.setItem("selectedBudget", JSON.stringify(budget))
+  }
+
+  const fetchBudgets = async () => {
+        const mBudgets = await getBudgets(Number(localStorage.getItem("userId")));
+        setBudgets(mBudgets);
+    }
 
   return (
     <Provider>
       <Router>
-      <Navbar className="navbar"/>
+      <Navbar className="navbar" fetchBudgets={fetchBudgets}/>
       <div className="authProvider">
         <AuthProvider >
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/dashboard" element={<ChakraProvider value={defaultSystem}><Dashboard /></ChakraProvider>}/>
-            <Route path="/budget" element={<ChakraProvider value={defaultSystem}><Budget /></ChakraProvider>}/>
+            <Route path="/dashboard" element={<ChakraProvider value={defaultSystem}><Dashboard budget={selectedBudget} 
+            setSelectedBudget={selectBudget}
+            fetchBudgets={fetchBudgets}
+            budgets={budgets}/></ChakraProvider>}/>
+            <Route path="/budget" element={<ChakraProvider value={defaultSystem}><Budget budget={selectedBudget!!}/></ChakraProvider>}/>
           </Routes>
         </AuthProvider>
         </div>

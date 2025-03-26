@@ -1,26 +1,21 @@
-import { useEffect, useState } from "react";
-import { getBudgets } from "../services/BudgetService";
 
 import BudgetCard from "../components/BudgetCard/BudgetCard";
-import { ButtonGroup, EmptyState, HStack, VStack } from "@chakra-ui/react"
-import { HiCalculator } from "react-icons/hi"
 import CreateBudgetModal from "../components/CreateBudgetModal/CreateBudgetModal";
-
 import '../styles/Dashboard.css';
 
-interface Budget {
-    id: number;
-    name: string;
-    fields: string[];
+import { useEffect } from "react";
+import { ButtonGroup, EmptyState, HStack, VStack } from "@chakra-ui/react"
+import { HiCalculator } from "react-icons/hi"
+import { Budget } from "../services/BudgetService";
+
+interface DashboardProps {
+    budget: Budget | null
+    setSelectedBudget: (budget: Budget) => void
+    fetchBudgets : () => void
+    budgets : Budget[]
 }
 
-const Dashboard = () => {
-    const [budgets, setBudgets] = useState([]);
-
-    const fetchBudgets = async () => {
-        const mBudgets = await getBudgets(Number(localStorage.getItem("userId")));
-        setBudgets(mBudgets);
-    }
+const Dashboard : React.FC<DashboardProps> = ({setSelectedBudget, fetchBudgets, budgets}) => {
 
     useEffect(() => {
         fetchBudgets();
@@ -33,11 +28,10 @@ const Dashboard = () => {
             <HStack className="dashboard" wrap={"wrap"} gap={5}>
                 {budgets.length > 0 ? budgets.map((budget: Budget) => (
                     <BudgetCard 
-                    id={budget.id} 
-                    name={budget.name} 
-                    key={budget.name} 
-                    fields={budget.fields} 
-                    fetchBudgets={fetchBudgets}></BudgetCard>
+                    key={budget.id}
+                    budget={budget}
+                    fetchBudgets={fetchBudgets}
+                    onSelectBudget={setSelectedBudget}></BudgetCard>
                 )) :
                      <EmptyState.Root width="320px" height="275px" size="lg" borderRadius={"2%"} padding={"2%"}>
                         <EmptyState.Content>

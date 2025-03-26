@@ -1,8 +1,16 @@
+import BudgetTable from "../components/BudgetTable/BudgetTable"
 
-const Budget = () => {
+import {Budget as BudgetObject} from "../services/BudgetService"
+
+interface BudgetProps {
+    budget: BudgetObject
+}
+
+const Budget : React.FC<BudgetProps> = ({budget}) => {
+
 
     return (
-        <h1>Budget</h1>
+       <BudgetTable budget={budget!!}/>
     )
 }
 
