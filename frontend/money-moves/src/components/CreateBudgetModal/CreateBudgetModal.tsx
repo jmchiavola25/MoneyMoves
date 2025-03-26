@@ -4,7 +4,7 @@ import { Button, CloseButton, Dialog, Portal } from "@chakra-ui/react"
 import CreateBudgetFieldset from "../CreateBudgetFieldset/CreateBudgetFieldset"
 import { useState } from 'react';
 import { LuPlus } from 'react-icons/lu';
-import { tertiaryColor } from '../../utils/colors';
+import { tertiaryButtonColor } from '../../utils/colors';
 
 interface CreateBudgetModalProps {
     fetchBudgets: () => void;
@@ -17,7 +17,7 @@ const CreateBudgetModal : React.FC<CreateBudgetModalProps> = ({fetchBudgets}) =>
     return(
     <Dialog.Root lazyMount open={open} onOpenChange={(e) => setOpen(e.open)}>
         <Dialog.Trigger asChild>
-        <Button variant="outline" size="lg" background={tertiaryColor} color={"white"}>
+        <Button variant="outline" size="lg" background={tertiaryButtonColor} color={"white"}>
             <LuPlus/>
             Add
         </Button>
