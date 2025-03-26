@@ -1,6 +1,6 @@
 import { validateToken } from "../services/AuthService";
 
-export async function authenticateToken() : Promise<Number>{
+export async function authenticateToken() : Promise<number>{
     const token = localStorage.getItem('token');
     if (!token) {
         return 0;

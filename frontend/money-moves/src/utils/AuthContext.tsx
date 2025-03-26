@@ -24,8 +24,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
     const checkTokenAndRedirect = async () => {
+        var isUserAuthenticated = 0;
         if (!isAuthenticated) {
-            const isUserAuthenticated = await authenticateToken();
+            isUserAuthenticated = await authenticateToken();
             // If token is invalid or not present, redirect to /login
             if (!isUserAuthenticated && location.pathname !== "/signup") {
                 navigate('/login');
@@ -35,8 +36,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 console.log("authenticate is true")
             }
         }
-        if (isAuthenticated && (location.pathname === "/signup" || location.pathname === "/login"))
+        if (isUserAuthenticated && (location.pathname === "/signup" || location.pathname === "/login"))
         {
+            console.log("navigating to dashboard")
             navigate("/dashboard")
         }
       };
