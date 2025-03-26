@@ -1,6 +1,6 @@
 import "./NavBar.css"
 
-import { Box, ButtonGroup, Flex, HStack, Button, Avatar } from "@chakra-ui/react"
+import { Box, ButtonGroup, Flex, HStack, Button } from "@chakra-ui/react"
 import { useLocation, useNavigate } from "react-router-dom"
 import AvatarMenu from "../AvatarMenu/AvatarMenu"
 import CreateBudgetModal from "../CreateBudgetModal/CreateBudgetModal"

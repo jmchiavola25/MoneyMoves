@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 import { getBudgets } from "../services/BudgetService";
 
 import BudgetCard from "../components/BudgetCard/BudgetCard";
-import { Button, ButtonGroup, EmptyState, HStack, VStack, Menu, Portal, IconButton } from "@chakra-ui/react"
+import { ButtonGroup, EmptyState, HStack, VStack } from "@chakra-ui/react"
 import { HiCalculator } from "react-icons/hi"
 import CreateBudgetModal from "../components/CreateBudgetModal/CreateBudgetModal";
 
 import '../styles/Dashboard.css';
-import { LuPlus } from "react-icons/lu";
-import { primaryColor } from "../utils/colors";
 
 interface Budget {
     id: number;
