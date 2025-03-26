@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import Dashboard from "../pages/Dashboard";
+import Budget from '../pages/Budget';
 import "../styles/App.css"
 import { Provider } from '../components/ui/provider';
 
@@ -24,7 +25,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-              <Route path="/dashboard" element={<ChakraProvider value={defaultSystem}><Dashboard /></ChakraProvider>}/>
+            <Route path="/dashboard" element={<ChakraProvider value={defaultSystem}><Dashboard /></ChakraProvider>}/>
+            <Route path="/budget" element={<ChakraProvider value={defaultSystem}><Budget /></ChakraProvider>}/>
           </Routes>
         </AuthProvider>
         </div>
