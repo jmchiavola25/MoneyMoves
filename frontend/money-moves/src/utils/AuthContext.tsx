@@ -36,7 +36,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 console.log("authenticate is true")
             }
         }
-        if (isUserAuthenticated && (location.pathname === "/signup" || location.pathname === "/login"))
+        if ((isUserAuthenticated || isAuthenticated) && (location.pathname === "/signup" || location.pathname === "/login"))
         {
             console.log("navigating to dashboard")
             navigate("/dashboard")

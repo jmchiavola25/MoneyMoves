@@ -19,8 +19,8 @@ html, body, #root {
   margin-top: 15vh;
   padding-left: 5%;
   padding-right: 5%;
-  flex-grow: 1; /* Automatically fills remaining height */
   max-height: 92vh; /* Ensures it doesn't exceed 92% */
+  height: 90%;
   width: 100%;
   display: flex;
   justify-content: center;

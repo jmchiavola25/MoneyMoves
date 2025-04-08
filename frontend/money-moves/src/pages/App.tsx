@@ -27,6 +27,17 @@ function App() {
   const fetchBudgets = async () => {
         const mBudgets = await getBudgets(Number(localStorage.getItem("userId")));
         setBudgets(mBudgets);
+        if (selectedBudget !== null)
+        {
+          const selected = mBudgets.find((budget: BudgetObject) => budget.id === selectedBudget!!.id);
+          setSelectedBudget(selected || null); // Set to null if no match is found
+          localStorage.setItem("selectedBudget", JSON.stringify(selected))
+        }
+        else
+        {
+          setSelectedBudget(JSON.parse(localStorage.getItem("selectedBudget")!!))
+        }
+        
     }
 
   return (
@@ -39,11 +50,23 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/dashboard" element={<ChakraProvider value={defaultSystem}><Dashboard budget={selectedBudget} 
-            setSelectedBudget={selectBudget}
-            fetchBudgets={fetchBudgets}
-            budgets={budgets}/></ChakraProvider>}/>
-            <Route path="/budget" element={<ChakraProvider value={defaultSystem}><Budget budget={selectedBudget!!}/></ChakraProvider>}/>
+            <Route path="/dashboard" 
+              element={
+                <ChakraProvider value={defaultSystem}>
+                  <Dashboard 
+                    budget={selectedBudget} 
+                    setSelectedBudget={selectBudget}
+                    fetchBudgets={fetchBudgets}
+                    budgets={budgets}/>
+                </ChakraProvider>}/>
+            <Route path="/budget" 
+              element={
+                <ChakraProvider value={defaultSystem}>
+                  <Budget 
+                    budget={selectedBudget!!}
+                    fetchBudgets={fetchBudgets}
+                    setSelectedBudget={setSelectedBudget}/>
+                </ChakraProvider>}/>
           </Routes>
         </AuthProvider>
         </div>
